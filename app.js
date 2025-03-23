@@ -48,8 +48,9 @@ function display(data) {
   keys.forEach(k => {
     const fixed = data.fisso?.[k] ?? "--";
     const mobile = data.mobile?.[k] ?? "--";
-    document.getElementById(k)?.textContent = `${fixed} / ${mobile}`;
-  });
+  if (document.getElementById(k)) {
+  document.getElementById(k).textContent = `${fixed} / ${mobile}`;
+}
 
   shiftAndPush(chartPM, data.fisso?.pm25 || 0, data.mobile?.pm25 || 0);
   shiftAndPush(chartTemp, data.fisso?.temp || 0, data.mobile?.temp || 0);
